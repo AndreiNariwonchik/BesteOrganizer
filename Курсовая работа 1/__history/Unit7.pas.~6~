@@ -1,0 +1,56 @@
+unit Unit2;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, sLabel,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, sButton, sEdit;
+
+type
+  TRedact_Items = class(TForm)
+    Image1: TImage;
+    Items_Name: TsLabel;
+    All_Items: TStringGrid;
+    Items_Number1edit: TsEdit;
+    Items_Name1Label: TsLabel;
+    Save_Items: TsButton;
+    Items_Number2edit: TsEdit;
+    Items_Number1label: TsLabel;
+    Items_Name1edit: TsEdit;
+    Items_Name2edit: TsEdit;
+    Items_Number2label: TsLabel;
+    Items_Name2label: TsLabel;
+    procedure Save_ItemsClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Redact_Items: TRedact_Items;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit6;
+
+procedure TRedact_Items.Save_ItemsClick(Sender: TObject);
+var
+i:integer;
+begin
+  for i := 0 to length(MyContacts)-1 do
+    begin
+      if (MyContacts[i].Contact_Name = Items_Name1edit.Text) and (MyContacts[i].Contact_Number = Items_Number1edit.Text) then
+      begin
+        MyContacts[i].Contact_Name := Items_Name2edit.Text;
+        MyContacts[i].Contact_Number := Items_Number2edit.Text;
+        Redact_Items.All_Items.Cells[0 ,i+1] := MyContacts[i].Contact_Name;
+        Redact_Items.All_Items.Cells[1, i+1] := MyContacts[i].Contact_Number;
+      end;
+    end;
+end;
+
+end.

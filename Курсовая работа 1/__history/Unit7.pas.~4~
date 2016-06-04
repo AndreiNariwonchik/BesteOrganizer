@@ -1,0 +1,39 @@
+unit Unit7;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, sLabel,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, sButton, sEdit;
+
+type
+  TRedact_Items = class(TForm)
+    Image1: TImage;
+    Items_Name: TsLabel;
+    All_Items: TStringGrid;
+    Items_Number1edit: TsEdit;
+    Items_Name1Label: TsLabel;
+    Save_Items: TsButton;
+    Items_Number2edit: TsEdit;
+    Items_Number1label: TsLabel;
+    Items_Name1edit: TsEdit;
+    Items_Name2edit: TsEdit;
+    Items_Number2label: TsLabel;
+    Items_Name2label: TsLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Redact_Items: TRedact_Items;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit6;
+
+end.

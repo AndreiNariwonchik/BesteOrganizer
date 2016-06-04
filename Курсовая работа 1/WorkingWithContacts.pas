@@ -1,0 +1,65 @@
+unit WorkingWithContacts;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, sLabel,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, sButton, sEdit;
+
+type
+  TViewAndEditContacts = class(TForm)
+    Image1: TImage;
+    Items_Name: TsLabel;
+    All_Items: TStringGrid;
+    Items_Number1edit: TsEdit;
+    Items_Name1Label: TsLabel;
+    Save_Items: TsButton;
+    Items_Number2edit: TsEdit;
+    Items_Number1label: TsLabel;
+    Items_Name1edit: TsEdit;
+    Items_Name2edit: TsEdit;
+    Items_Number2label: TsLabel;
+    Items_Name2label: TsLabel;
+    Close_Redact_items: TsButton;
+    procedure Save_ItemsClick(Sender: TObject);
+    procedure Close_Redact_itemsClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ViewAndEditContacts: TViewAndEditContacts;
+
+implementation
+
+{$R *.dfm}
+
+uses ContactChanche;
+
+procedure TViewAndEditContacts.Close_Redact_itemsClick(Sender: TObject);
+begin
+  ViewAndEditContacts.Close;
+end;
+
+procedure TViewAndEditContacts.Save_ItemsClick(Sender: TObject);
+var
+i:integer;
+begin
+  for i := 0 to length(MyContacts)-1 do
+    begin
+      if (MyContacts[i].Contact_Name = Items_Name1edit.Text) and (MyContacts[i].Contact_Number = Items_Number1edit.Text) then
+      begin
+        MyContacts[i].Contact_Name := Items_Name2edit.Text;
+        MyContacts[i].Contact_Number := Items_Number2edit.Text;
+        ViewAndEditContacts.All_Items.Cells[0 ,i+1] := MyContacts[i].Contact_Name;
+        ViewAndEditContacts.All_Items.Cells[1, i+1] := MyContacts[i].Contact_Number;
+        Showmessage('Изменения сохранены!');
+        break;
+      end;
+    end;
+end;
+
+end.

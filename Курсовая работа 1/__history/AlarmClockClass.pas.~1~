@@ -1,0 +1,104 @@
+unit Unit3;
+
+interface
+  uses  Winapi.Windows, Vcl.ExtCtrls,System.Classes, DateUtils, SysUtils;
+
+Type
+TAlarm_Clock = class
+private
+  AlarmClockName:string;
+  AlarmClockDay:string;
+  AlarmClockHour:integer;
+  AlarmClockMinute:integer;
+public
+  Timer:TTimer;
+  property Alarm_Clock_Name:string read AlarmClockName write AlarmClockName;
+  property Alarm_Clock_Day:string read AlarmClockDay write AlarmClockDay;
+  property Alarm_Clock_Hour:integer read AlarmClockHour write AlarmClockHour;
+  property Alarm_Clock_Minute:integer read AlarmClockMinute write AlarmClockMinute;
+  constructor create(newAlarm_Clock_Name, newAlarm_Clock_Day:string; newAlarm_Clock_Hour, newAlarm_Clock_Minute:integer);
+
+  Procedure TimerOnTimer(Sender:TObject);
+end;
+
+implementation
+
+
+uses Unit4, Unit5;
+
+constructor TAlarm_Clock.create(newAlarm_Clock_Name, newAlarm_Clock_Day: string;
+ newAlarm_Clock_Hour, newAlarm_Clock_Minute: integer);
+begin
+  Timer:= TTimer.Create(Timer);
+  Alarm_Clock_Name := newAlarm_Clock_Name;
+  Alarm_Clock_Hour := newAlarm_Clock_Hour;
+  Alarm_Clock_Minute := newAlarm_Clock_Minute;
+  Alarm_Clock_Day := newAlarm_Clock_Day;
+  Timer.OnTimer := TimerOnTimer;
+  //Timer.OnTimer := EventsOnTimer;
+  Timer.Interval := 1000;
+  Timer.Enabled := True;
+
+end;
+
+procedure TAlarm_Clock.TimerOnTimer(Sender: TObject);
+var
+i:integer;
+AlarmTime:TDateTime;
+begin
+  AlarmTime := EncodeTime(Alarm_Clock_Hour, Alarm_Clock_Minute, 0, 0);
+  if (CompareTime(now, AlarmTime) >= 0) and (Day[DayOfWeek(now)] = Alarm_Clock_Day )then
+  begin
+    Timer.Enabled:=False;
+    Call.Caption := 'Будильник';
+    Call.Ok_Event.Visible := false;
+    Call.Content_Memo.Visible := false;
+    Call.Shut_off.Visible := true;
+    Call.Set_asid.Visible := true;
+    Call.sLabel1.Font.Size := 15;
+    Call.sLabel2.Font.Size := 20;
+    Call.Font.Name := 'Times New Roman';
+    Call.sLabel1.Caption := Alarm_Clock_Name;
+    if (Alarm_Clock[i].Alarm_Clock_Minute in [0..9]) or (Alarm_Clock[i].Alarm_Clock_Hour in [0..9]) then
+    begin
+      if  (Alarm_Clock[i].Alarm_Clock_Hour in [0..9]) and not( Alarm_Clock[i].Alarm_Clock_minute in [0..9] ) then
+      begin
+        Call.sLabel2.Caption :='0' + IntToStr(Alarm_Clock[i].Alarm_Clock_Hour)
+        + ':' + InttoStr(Alarm_Clock[i].Alarm_Clock_Minute);
+      end;
+      if  (Alarm_Clock[i].Alarm_Clock_Minute in [0..9]) and not(Alarm_Clock[i].Alarm_Clock_Hour in [0..9]) then
+      begin
+        Call.sLabel2.Caption :=IntToStr(Alarm_Clock[i].Alarm_Clock_Hour)
+        + ':0' + InttoStr(Alarm_Clock[i].Alarm_Clock_Minute);
+      end;
+      if  (Alarm_Clock[i].Alarm_Clock_Hour in [0..9]) and (Alarm_Clock[i].Alarm_Clock_Minute in [0..9]) then
+      begin
+        Call.sLabel2.Caption :='0' + IntToStr(Alarm_Clock[i].Alarm_Clock_Hour)
+        + ':' + InttoStr(Alarm_Clock[i].Alarm_Clock_Minute);
+      end;
+    end
+    else
+    begin
+      Call.sLabel2.Caption := IntToStr(Alarm_Clock_Hour) + ' : ' + IntToStr(Alarm_Clock_Minute);
+    end;
+    if New_Alarm_Clock.Melody1.Checked = true then
+    Call.MediaPlayer1.FileName:='Alarm_Clock Musik\мелодия1.mp3'
+    else
+    if New_Alarm_Clock.Melody2.Checked = true then
+    Call.MediaPlayer1.FileName:='Alarm_Clock Musik\мелодия2.mp3'
+    else
+    if New_Alarm_Clock.Melody3.Checked = true then
+    Call.MediaPlayer1.FileName:='Alarm_Clock Musik\мелодия4.mp3'
+    else
+    Call.MediaPlayer1.FileName:='Alarm_Clock Musik\мелодия3.mp3';
+    Call.MediaPlayer1.Open;
+    Call.MediaPlayer1.Play;
+    Call.MediaPlayer1.Visible := false;
+    Call.Showmodal;
+  end;
+
+end;
+
+{ TAlarm_Clock }
+
+end.

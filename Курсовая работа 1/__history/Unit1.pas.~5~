@@ -1,0 +1,72 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, sSkinManager, Vcl.StdCtrls, sButton,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls, DateUtils;
+
+type
+  TGreeting = class(TForm)
+    sSkinManager1: TsSkinManager;
+    Image1: TImage;
+    Text_Data: TPaintBox;
+    procedure Text_DataPaint(Sender: TObject);
+    procedure Text_DataClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Greeting: TGreeting;
+  month:array[1..12] of string = ('января','февраля','марта','апреля','мая','июня',
+  'июля','августа','сентября','октября','ноября','декабря');
+
+implementation
+
+{$R *.dfm}
+
+uses Unit2;
+
+procedure TGreeting.Text_DataClick(Sender: TObject);
+begin
+  Greeting.Hide;
+  Organizer.ShowModal;
+end;
+
+procedure TGreeting.Text_DataPaint(Sender: TObject);
+var
+str:string;
+x, y, w, h:integer;
+begin
+  with Text_Data.Canvas do
+  begin
+    Brush.Style := bsClear;
+    Font.Name := 'Times New Roman';
+    str := 'Добрый день!';
+    Font.Size := 40;
+    Font.Style := [fsItalic];
+    w := TextWidth(str);
+    h := TextHeight(str);
+    x := round((Width - w) / 2);
+    y := 50;
+    Font.Color := clWhite;
+    TextOut(x,y,str);
+    Font.Color := clBlack;
+    TextOut(x + 2,y + 2, str);
+    y := y + h;
+    Font.Size := 30;
+    str := FormatDateTime('Сегодня d ', now) + month[MonthOf(Now)] + FormatDateTime(',dddd', now);
+    w := TextWidth(str);
+    x := round ((Text_Data.Width - w) / 2);
+    Font.Color := clWhite;
+    TextOut(x, y, str);
+    Font.Color := clBlack;
+    TextOut(x+2, y+2, str);
+  end;
+end;
+
+end.

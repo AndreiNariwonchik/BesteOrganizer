@@ -1,0 +1,154 @@
+unit ContactChanche;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, sButton, Vcl.Imaging.jpeg,
+  Vcl.ExtCtrls, sEdit, sLabel;
+
+type
+  TNew_Contact = class(TForm)
+    Image1: TImage;
+    Add_newContact: TsButton;
+    Edit_Contact: TsButton;
+    Delete_Contact: TsButton;
+    Name_Contacts_label: TsLabel;
+    Name_Contact: TsEdit;
+    Number_Phone: TsEdit;
+    Number_Phone_Label: TsLabel;
+    Exit: TsButton;
+    procedure Add_newContactClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure ExitClick(Sender: TObject);
+    procedure Edit_ContactClick(Sender: TObject);
+    procedure Delete_ContactClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+type
+Contact = record
+  Contact_Name:string;
+  Contact_Number:string;
+end;
+
+var
+  New_Contact: TNew_Contact;
+  MyContacts: array of Contact;
+  Contacts_File: TextFile;
+
+implementation
+
+{$R *.dfm}
+
+uses Unit4, Unit2, RedactContacts;
+
+procedure TNew_Contact.Add_newContactClick(Sender: TObject);
+begin
+  Setlength(MyContacts, length(MyContacts)+1);
+  MyContacts[length(MyContacts)-1].Contact_Name := Name_Contact.Text;
+  MyContacts[length(MyContacts)-1].Contact_Number := Number_Phone.Text;
+end;
+
+procedure TNew_Contact.Delete_ContactClick(Sender: TObject);
+var
+i,j:integer;
+copyMyContact:Contact;
+Flag:boolean;
+begin
+  flag := false;
+  for i := 0 to length(MyContacts)-1 do
+  begin
+    if (MyContacts[i].Contact_Name = Name_Contact.Text) and (MyContacts[i].Contact_Number = Number_Phone.Text) and flag = true then
+    begin
+      flag := true;
+    end;
+  end;
+  for i := 0 to length(MyContacts)-2 do
+  begin
+    if (MyContacts[i].Contact_Name = Name_Contact.Text) and (MyContacts[i].Contact_Number = Number_Phone.Text) and flag = true then
+    begin
+      copyMyContact := MyContacts[i];
+      MyContacts[i] := MyContacts[i+1];
+      MyContacts[i+1] := copyMyContact;
+    end;
+  end;
+  if flag = true then
+  begin
+    Setlength(MyContacts, length(MyContacts)-1);
+  end;
+end;
+
+procedure TNew_Contact.Edit_ContactClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  with Redact_Items do
+  begin
+    Height := 500;
+    Close_Redact_Items.Visible := false;
+    Items_Name.Caption := 'Все контакты';
+    All_Items.Cells[0,0] := 'Имя';
+    All_Items.Cells[1,0] := 'Номер';
+    All_Items.RowCount := length(MyContacts)+1;
+    Items_Name1Label.Caption := 'Имя';
+    Items_Number1Label.Caption := 'Номер';
+    Items_Name2Label.Caption := 'на имя';
+    Items_Number2Label.Caption := 'на номер';
+    for i := 0 to length(MyContacts)-1 do
+    begin
+      All_Items.Cells[0 ,i+1] := MyContacts[i].Contact_Name;
+      All_Items.Cells[1, i+1] := MyContacts[i].Contact_Number;
+      end;
+      Showmodal;
+    end;
+end;
+
+procedure TNew_Contact.ExitClick(Sender: TObject);
+var
+i:integer;
+begin
+try
+  Rewrite(Contacts_File);
+  for i := 0  to length(MyContacts)-1 do
+  begin
+    Writeln(Contacts_File, MyContacts[i].Contact_Name);
+    Writeln(Contacts_File, MyContacts[i].Contact_Number);
+    Writeln(Contacts_File);
+  end;
+  CloseFile(Contacts_File);
+  New_Contact.Close;
+  Organizer.Show;
+except
+  Showmessage('В программе произошла ошибка!');
+end;
+end;
+
+procedure TNew_Contact.FormCreate(Sender: TObject);
+begin
+  try
+    AssignFile(Contacts_File,'Files\Contacts.txt');
+    Reset(Contacts_File);
+    Setlength(MyContacts, 0);
+    while not (EOF(Contacts_File)) do
+    begin
+      Setlength(MyContacts, length(MyContacts)+1);
+      readln(Contacts_File, MyContacts[length(MyContacts)-1].Contact_Name);
+      readln(Contacts_File, MyContacts[length(MyContacts)-1].Contact_Number);
+      readln(Contacts_File);
+    end;
+    CloseFile(Contacts_File);
+  except
+    Showmessage('Произошла ошибка открытии файла. Мы пытаемся её исправить!');
+    sleep(3000);
+    AssignFile(Contacts_File,'Files\Contacts.txt');
+    Rewrite(Contacts_File);
+    closeFile(Contacts_File);
+    Showmessage('Ошибка успешно исправлена!');
+  end;
+end;
+
+end.

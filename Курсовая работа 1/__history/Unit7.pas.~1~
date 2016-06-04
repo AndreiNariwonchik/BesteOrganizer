@@ -1,0 +1,25 @@
+unit Unit7;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids;
+
+type
+  TRedact_Contacts = class(TForm)
+    StringGrid1: TStringGrid;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Redact_Contacts: TRedact_Contacts;
+
+implementation
+
+{$R *.dfm}
+
+end.

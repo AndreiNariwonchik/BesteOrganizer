@@ -1,0 +1,16 @@
+program Project4;
+
+uses
+  Vcl.Forms,
+  Unit1 in 'Unit1.pas' {Greeting},
+  Unit2 in 'Unit2.pas' {Organizer};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TGreeting, Greeting);
+  Application.CreateForm(TOrganizer, Organizer);
+  Application.Run;
+end.

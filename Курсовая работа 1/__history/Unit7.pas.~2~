@@ -1,0 +1,28 @@
+unit Unit7;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Grids, Vcl.StdCtrls, sLabel,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TRedact_Items = class(TForm)
+    All_Items: TStringGrid;
+    Image1: TImage;
+    sLabel1: TsLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Redact_Items: TRedact_Items;
+
+implementation
+
+{$R *.dfm}
+
+end.

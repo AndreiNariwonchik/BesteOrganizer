@@ -1,0 +1,87 @@
+unit Unit3;
+
+interface
+  uses  Winapi.Windows, Vcl.ExtCtrls,System.Classes, DateUtils, SysUtils, Unit5;
+
+Type
+TAlarm_Clock = class
+private
+ public
+  Alarm_Clock_Name:string;
+  Alarm_Clock_Day:string;
+  Alarm_Clock_Hour:integer;
+  Alarm_Clock_Minute:integer;
+  Timer:TTimer;
+
+  constructor create(newAlarm_Clock_Name, newAlarm_Clock_Day:string; newAlarm_Clock_Hour, newAlarm_Clock_Minute:integer);
+  Procedure TimerOnTimer(Sender:TObject);
+end;
+
+implementation
+
+//uses Unit5;
+
+
+uses Unit4;
+
+constructor TAlarm_Clock.create(newAlarm_Clock_Name, newAlarm_Clock_Day: string;
+ newAlarm_Clock_Hour, newAlarm_Clock_Minute: integer);
+begin
+  Timer:= TTimer.Create(Timer);
+  Alarm_Clock_Name := newAlarm_Clock_Name;
+  Alarm_Clock_Hour := newAlarm_Clock_Hour;
+  Alarm_Clock_Minute := newAlarm_Clock_Minute;
+  Alarm_Clock_Day := newAlarm_Clock_Day;
+  Timer.OnTimer := TimerOnTimer;
+  Timer.Interval := 250;
+  Timer.Enabled := True;
+end;
+
+procedure TAlarm_Clock.TimerOnTimer(Sender: TObject);
+var
+i:integer;
+AlarmTime:TDateTime;
+begin
+  AlarmTime := EncodeTime(Alarm_Clock_Hour, Alarm_Clock_Minute, 0, 0);
+  if (CompareTime(now, AlarmTime) >= 0) and (Day[DayOf(now)] = Alarm_Clock_Day )then
+  begin
+    Timer.Enabled:=False;
+    Call.Caption := 'Будильник';
+    Call.sLabel1.Font.Size := 15;
+    Call.sLabel2.Font.Size := 20;
+    Call.Font.Name := 'Times New Roman';
+    Call.sLabel1.Caption := Alarm_Clock_Name;
+    if Alarm_Clock[i].Alarm_Clock_Minute in [1..9] then
+      begin
+        Call.sLabel2.Caption := IntToStr(Alarm_Clock[i].Alarm_Clock_Hour)
+        + ':0' + InttoStr(Alarm_Clock[i].Alarm_Clock_Minute);
+      end
+      else
+      begin
+        Call.sLabel2.Caption := IntToStr(Alarm_Clock_Hour) + ' : ' + IntToStr(Alarm_Clock_Minute);
+      end;
+    if New_Alarm_Clock.Melody1.Checked = true then
+    Call.MediaPlayer1.FileName:='d:\ДОКУМЕНТЫ\Новая папка\Alarm_Clock Musik\мелодия1.mp3'
+    else
+    if New_Alarm_Clock.Melody2.Checked = true then
+    Call.MediaPlayer1.FileName:='d:\ДОКУМЕНТЫ\Новая папка\Alarm_Clock Musik\мелодия2.mp3'
+    else
+    if New_Alarm_Clock.Melody1.Checked = true then
+    Call.MediaPlayer1.FileName:='d:\ДОКУМЕНТЫ\Новая папка\Alarm_Clock Musik\мелодия3.mp3';
+    Call.MediaPlayer1.Open;
+    Call.MediaPlayer1.Play;
+    Call.MediaPlayer1.Visible := false;
+    //музычка
+//    beep;
+    if Call.Showmodal = -1 then
+    begin
+      Call.Showmodal;
+    end;
+  //  Showmessage(FormatDatetime('hh:nn -', now));
+  end;
+
+end;
+
+{ TAlarm_Clock }
+
+end.

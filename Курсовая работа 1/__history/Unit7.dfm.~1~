@@ -1,0 +1,32 @@
+object Redact_Contacts: TRedact_Contacts
+  Left = 0
+  Top = 0
+  Caption = 'Redact_Contacts'
+  ClientHeight = 371
+  ClientWidth = 239
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object StringGrid1: TStringGrid
+    Left = 20
+    Top = 10
+    Width = 165
+    Height = 361
+    Color = clHighlight
+    ColCount = 2
+    FixedColor = clBlue
+    FixedCols = 0
+    RowCount = 1
+    FixedRows = 0
+    GradientEndColor = clSkyBlue
+    GradientStartColor = clNavy
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goEditing, goTabs, goRowSelect, goThumbTracking]
+    TabOrder = 0
+  end
+end

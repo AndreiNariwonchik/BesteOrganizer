@@ -1,0 +1,25 @@
+program Project4;
+
+uses
+  Vcl.Forms,
+  Unit1 in 'Unit1.pas' {Greeting},
+  Unit2 in 'Unit2.pas' {Organizer},
+  Unit3 in 'Unit3.pas',
+  Unit4 in 'Unit4.pas' {New_Alarm_clock},
+  Unit5 in 'Unit5.pas' {Call},
+  Unit6 in 'Unit6.pas' {New_Contact},
+  Unit7 in 'Unit7.pas' {Redact_Contacts};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TGreeting, Greeting);
+  Application.CreateForm(TOrganizer, Organizer);
+  Application.CreateForm(TNew_Alarm_clock, New_Alarm_clock);
+  Application.CreateForm(TCall, Call);
+  Application.CreateForm(TNew_Contact, New_Contact);
+  Application.CreateForm(TRedact_Contacts, Redact_Contacts);
+  Application.Run;
+end.

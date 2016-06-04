@@ -1,0 +1,120 @@
+unit Unit9;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Unit8, Vcl.StdCtrls, sMemo, sButton,
+  sRadioButton, Vcl.ComCtrls, sUpDown, sEdit, sComboBox, sLabel, Vcl.ExtCtrls,
+  sPanel, Vcl.Imaging.jpeg, DateUtils, sCheckBox;
+
+type
+  TNew_Event = class(TForm)
+    sPanel1: TsPanel;
+    EventTheme_label: TsLabel;
+    Minute_Label: TsLabel;
+    Hour_Label: TsLabel;
+    Hour: TsEdit;
+    UpDownHour: TsUpDown;
+    Minute: TsEdit;
+    EventName_Edit: TsEdit;
+    UpDownMinute: TsUpDown;
+    Melody1: TsRadioButton;
+    Melody2: TsRadioButton;
+    Melody3: TsRadioButton;
+    Add_Event: TsButton;
+    AlarmClock_close: TsButton;
+    Content_memo: TsMemo;
+    Reminder: TsCheckBox;
+    MonthCalendar1: TMonthCalendar;
+    Image1: TImage;
+    procedure FormCreate(Sender: TObject);
+    procedure Add_EventClick(Sender: TObject);
+    procedure AlarmClock_closeClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  New_Event: TNew_Event;
+  MyEvents:array of TEvent;
+  Month:array[1..12] of string = ('январь','февраль','март','апрель','май','июнь',
+  'июль','август','сентябрь','октябрь','ноябрь','декабрь');
+  Events_File: TextFile;
+
+  implementation
+
+{$R *.dfm}
+
+uses Unit2;
+
+procedure TNew_Event.Add_EventClick(Sender: TObject);
+begin
+  if CompareDateTime(Now, EncodeDateTime(YearOf(now),MonthOf(MonthCalendar1.Date), DayOfTheMonth(MonthCalendar1.Date)
+  ,StrToInt(Hour.Text), StrToInt(Minute.Text), 0, 0)) <= 0 then
+  begin
+    if length(Content_memo.Text) < 60 then
+    begin
+      Setlength(MyEvents, length(MyEvents)+1);
+      MyEvents[length(MyEvents) - 1] := TEvent.create(EventName_Edit.Text, Month[MonthOf(MonthCalendar1.Date)],
+      DayOfTheMonth(MonthCalendar1.Date), StrToInt(Hour.Text), StrToInt(Minute.Text),
+      Reminder.Checked, Content_Memo.Text);
+    end
+    else
+    showmessage('Длина описания слишком большая, сделайте, пожалуйста, её меньше!');
+  end
+  else
+  begin
+    Showmessage('Это событие уже прошло!');
+  end;
+end;
+
+procedure TNew_Event.AlarmClock_closeClick(Sender: TObject);
+var
+i:integer;
+temp:string;
+begin
+  Showmessage(IntToStr(length(MyEvents)));
+  if length(MyEvents)>0 then
+  begin
+  try
+    AssignFile(Events_File,'Files\Events.txt');
+    rewrite(Events_File);
+    for i := 0 to length(MyEvents)-1 do
+      begin
+        Writeln(Events_File, MyEvents[i].EventTheme);
+        Writeln(Events_File, MyEvents[i].EventMonth);
+        Writeln(Events_File, IntToStr(MyEvents[i].EventDate));
+        Writeln(Events_File, IntToStr(MyEvents[i].EventHour));
+        Writeln(Events_File, IntToStr(MyEvents[i].EventMinute));
+        if MyEvents[i].EventReminder = true then
+        Writeln(Events_File, 'true')
+        else
+        Writeln(Events_File, 'false');
+        Writeln(Events_File, MyEvents[i].EventContent);
+        Writeln(Events_File);
+      end;
+      CloseFile(Events_File);
+  except
+     Showmessage('Произошла ошибка при попытке записи информации в файл. Возможно файл не найден. Чтобы исправить ошибку, создайте в папке Files\ документ Events.txt');
+  end;
+  end;
+  New_Event.Close;
+  Organizer.Show;
+end;
+
+procedure TNew_Event.FormCreate(Sender: TObject);
+var
+i:integer;
+begin
+  EventTheme_label.Font.Name := 'Times New Roman';
+  EventTheme_label.Font.Size := 14;
+  EventTheme_label.Font.Style := [fsItalic];
+  EventTheme_label.Caption:='Введите тему события: ';
+  UpDownHour.Position := HourOf(now);
+  UpDownMinute.Position := MinuteOf(now);
+end;
+
+end.

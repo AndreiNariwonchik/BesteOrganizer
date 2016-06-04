@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899.12.30 00:00:00.000.217,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit1.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.407,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit1.dfm=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.344,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit1.pas=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.293,D:\ДОКУМЕНТЫ\Новая папка\Unit1.pas=D:\ДОКУМЕНТЫ\Органайзер\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.272,D:\ДОКУМЕНТЫ\Органайзер\Unit1.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.404,D:\ДОКУМЕНТЫ\Новая папка\GreetingForm.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.910,D:\ДОКУМЕНТЫ\Новая папка\AddAlarmClock.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.690,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit2.dfm=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.683,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit2.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.217,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit1.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.882,=D:\ДОКУМЕНТЫ\Новая папка\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.965,D:\ДОКУМЕНТЫ\Новая папка\ContactChanche.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit6.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.026,=D:\ДОКУМЕНТЫ\Новая папка\Unit9.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.869,D:\ДОКУМЕНТЫ\Новая папка\Unit7.pas=D:\ДОКУМЕНТЫ\Новая папка\RedactContacts.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.343,=D:\ДОКУМЕНТЫ\Новая папка\Unit7.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.245,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Project2.dproj=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.526,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Project2.dproj=D:\ДОКУМЕНТЫ\Новая папка\Project4.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.333,D:\ДОКУМЕНТЫ\Новая папка\AddNewEvent.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit9.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.690,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit2.pas=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.965,D:\ДОКУМЕНТЫ\Новая папка\ContactChanche.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit6.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.388,=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.951,=D:\ДОКУМЕНТЫ\Новая папка\Unit4.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.725,=C:\Users\Андрей\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.683,D:\ДОКУМЕНТЫ\2 семестр\Organizer\Unit2.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.877,D:\ДОКУМЕНТЫ\Новая папка\Unit5.dfm=D:\ДОКУМЕНТЫ\Новая папка\AlarmClockAndEventsCall.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.910,D:\ДОКУМЕНТЫ\Новая папка\AddAlarmClock.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit4.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.499,D:\ДОКУМЕНТЫ\Новая папка\EventsClass.pas=D:\ДОКУМЕНТЫ\Новая папка\EventClass.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.272,D:\ДОКУМЕНТЫ\Органайзер\Unit1.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.778,D:\ДОКУМЕНТЫ\Новая папка\Project4.dproj=D:\ДОКУМЕНТЫ\Новая папка\Project4.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.333,D:\ДОКУМЕНТЫ\Новая папка\AddNewEvent.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit9.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.792,D:\ДОКУМЕНТЫ\Курсовая работа 1\RedactContacts.pas=D:\ДОКУМЕНТЫ\Курсовая работа 1\WorkingWithContacts.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.986,D:\ДОКУМЕНТЫ\Новая папка\MainMenu.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit2.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.869,D:\ДОКУМЕНТЫ\Новая папка\Unit7.dfm=D:\ДОКУМЕНТЫ\Новая папка\RedactContacts.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.295,=D:\ДОКУМЕНТЫ\Новая папка\Unit6.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.170,D:\ДОКУМЕНТЫ\Новая папка\AlarmClockClass.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit3.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.293,D:\ДОКУМЕНТЫ\Новая папка\Unit1.dfm=D:\ДОКУМЕНТЫ\Органайзер\Unit1.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.609,D:\ДОКУМЕНТЫ\Новая папка\BesteOrganizer.dproj=D:\ДОКУМЕНТЫ\Новая папка\Project4.dproj</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.761,=D:\ДОКУМЕНТЫ\Новая папка\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.235,D:\ДОКУМЕНТЫ\Новая папка\EventClass.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit8.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.986,D:\ДОКУМЕНТЫ\Новая папка\MainMenu.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit2.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.851,D:\ДОКУМЕНТЫ\Новая папка\AlarmClockAndEventsCall.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.476,D:\ДОКУМЕНТЫ\Новая папка\AlarmClockAndEventsCall.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.404,D:\ДОКУМЕНТЫ\Новая папка\GreetingForm.pas=D:\ДОКУМЕНТЫ\Новая папка\Unit1.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.952,=D:\ДОКУМЕНТЫ\Новая папка\Unit5.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.877,D:\ДОКУМЕНТЫ\Новая папка\Unit5.pas=D:\ДОКУМЕНТЫ\Новая папка\AlarmClockAndEventsCall.pas</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.792,D:\ДОКУМЕНТЫ\Курсовая работа 1\RedactContacts.dfm=D:\ДОКУМЕНТЫ\Курсовая работа 1\WorkingWithContacts.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.851,D:\ДОКУМЕНТЫ\Новая папка\AlarmClockAndEventsCall.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit5.dfm</Transaction>
+    <Transaction>1899.12.30 00:00:00.000.476,D:\ДОКУМЕНТЫ\Новая папка\AlarmClockAndEventsCall.dfm=D:\ДОКУМЕНТЫ\Новая папка\Unit5.dfm</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="GreetingForm.pas"/>
+    <File Path="GreetingForm.dfm"/>
+    <File Path="MainMenu.pas"/>
+    <File Path="MainMenu.dfm"/>
+    <File Path="AlarmClockClass.pas"/>
+    <File Path="AddAlarmClock.pas"/>
+    <File Path="AddAlarmClock.dfm"/>
+    <File Path="AlarmClockAndEventsCall.pas"/>
+    <File Path="AlarmClockAndEventsCall.dfm"/>
+    <File Path="ContactChanche.pas"/>
+    <File Path="ContactChanche.dfm"/>
+    <File Path="WorkingWithContacts.pas"/>
+    <File Path="WorkingWithContacts.dfm"/>
+    <File Path="EventsClass.pas"/>
+    <File Path="AddNewEvent.pas"/>
+    <File Path="AddNewEvent.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

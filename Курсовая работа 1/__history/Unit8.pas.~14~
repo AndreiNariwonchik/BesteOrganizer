@@ -1,0 +1,105 @@
+unit Unit8;
+
+interface
+
+uses Winapi.Windows, Vcl.ExtCtrls,System.Classes, DateUtils, SysUtils;
+
+Type
+TEvent = class
+private
+  Event_Theme:string;
+  Event_Month:string;
+  Event_Date:integer;
+  Event_Hour:integer;
+  Event_Minute:integer;
+  Event_Reminder:boolean;
+  Event_Content:AnsiString;
+public
+  Timer:TTimer;
+  constructor create(newEventTheme, newEventMonth:string; newEventDate, newEventHour, newEventMinute:integer; newEventReminder:boolean; newEventContent:AnsiString);
+  Procedure TimerOnTimer(Sender:TObject);
+  property EventTheme: string read Event_Theme write Event_Theme;
+  property EventMonth:string read Event_Month write Event_Month;
+  Property EventDate:integer read Event_Date write Event_Date;
+  property EventHour:integer read Event_Hour write Event_Hour;
+  property EventMinute:integer read Event_Minute write Event_Minute;
+  property EventReminder:boolean read Event_Reminder write Event_Reminder;
+  property EventContent:AnsiString read Event_Content write Event_Content;
+end;
+
+implementation
+
+{ TNote }
+uses Unit5, Unit9;
+{ TNote }
+
+constructor TEvent.create(newEventTheme, newEventMonth: string; newEventDate, newEventHour,
+  newEventMinute: integer; newEventReminder:boolean; newEventContent:AnsiString);
+begin
+  Timer:= TTimer.Create(Timer);
+  EventTheme := newEventTheme;
+  EventMonth := newEventMonth;
+  EventDate := newEventDate;
+  EventHour := newEventHour;
+  EventMinute := newEventMinute;
+  EventReminder := newEventReminder;
+  EventContent := newEventContent;
+  Timer.OnTimer := TimerOnTimer;
+  Timer.Interval := 1000;
+  if newEventReminder = true then
+  Timer.Enabled := True
+  else
+  Timer.Enabled := false;
+end;
+
+procedure TEvent.TimerOnTimer(Sender: TObject);
+var
+i:integer;
+AlarmTime:TDateTime;
+begin
+  AlarmTime := EncodeTime(EventHour, EventMinute, 0, 0);
+  if (CompareTime(now, AlarmTime) >= 0) and (Month[MonthOf(now)] = EventMonth) and (DayOfTheMonth(now) = EventDate)  then
+  begin
+    Timer.Enabled:=False;
+    if  EventReminder = true then
+    begin
+      Call.Caption := 'Ќапоминание';
+      Call.sLabel1.Font.Size := 15;
+      Call.sLabel2.Font.Size := 20;
+      Call.Shut_off.Visible := false;
+      Call.Set_asid.Visible := false;
+      Call.Ok_Event.Visible := true;
+      Call.content_memo.Visible := true;
+      Call.Height := 212;
+      Call.Font.Name := 'Times New Roman';
+      Call.sLabel1.Caption := EventTheme;
+      Call.Content_Memo.Lines.Add(EventContent);
+      if MyEvents[i].EventMinute in [1..9] then
+        begin
+          Call.sLabel2.Caption := IntToStr(MyEvents[i].EventHour)
+          + ':0' + InttoStr(MyEvents[i].EventMinute);
+        end
+        else
+        begin
+          Call.sLabel2.Caption := IntToStr(EventHour) + ' : ' + IntToStr(EventMinute);
+        end;
+
+      if New_Event.Melody1.Checked = true then
+      Call.MediaPlayer1.FileName:='Events_Music\мелоди€3.mp3'
+      else
+      if New_Event.Melody2.Checked = true then
+      Call.MediaPlayer1.FileName:='Events_Music\мелоди€2.mp3'
+      else
+      if New_Event.Melody3.Checked = true then
+      Call.MediaPlayer1.FileName:='Events_Music\мелоди€4.mp3'
+      else
+      Call.MediaPlayer1.FileName:='Events_Music\мелоди€1.mp3';
+      Call.MediaPlayer1.Open;
+      Call.MediaPlayer1.Play;
+    end;
+    Call.MediaPlayer1.Visible := false;
+    Call.Showmodal;
+  end;
+end;
+
+end.
